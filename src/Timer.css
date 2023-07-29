@@ -1,0 +1,96 @@
+.timer-container {
+  text-align: center;
+  padding: 20px;
+}
+
+/* ----- NUMBER COUNTDOWN */
+.timer-count {
+  /* font-size: 250px; */
+  font-size: 18rem; /* default for largee screens */
+  font-weight: bold;
+  padding-top: 50px;
+}
+
+/* ----- TIMER SETTINGS CONTAINER */
+/* .timer-settings {
+    width: 100%; 
+  max-width: 50%; 
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+} */
+.timer-settings {
+  /* background-color: aqua; */
+  width: 100%;
+  max-width: 50%;
+  display: inline-flex;
+  justify-content: center;
+}
+
+/* ----- SPENDING X MINUTES */
+
+.input-container-minutes {
+  /* width: 100%;
+  max-width: 50%; */
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  margin-top: 10px;
+  /* background-color: red; */
+}
+
+.spending-label,
+.on-label {
+  font-size: 20px;
+  padding-top: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 0;
+}
+
+/* ----- ON CATEGORY */
+.input-container-category {
+  width: 100%;
+  max-width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  /* background-color: green; */
+}
+
+/* .select-minutes,
+.select-category {
+  width: 100%;
+} */
+
+/* ----- START, PAUSE & RESET BUTTONS */
+.button-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 80px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Media query for desktop */
+/* @media (min-width: 768px) {
+  .input-container-minutes,
+  .input-container-category {
+    max-width: 50%;
+  }
+} */
+
+/* Additional media query for smaller devices, like mobile phones */
+@media (max-width: 480px) {
+  .timer-count {
+    font-size: 9em;
+  }
+}
+
+/* Make the chips full-width on mobile */
+.timer-container {
+  padding: 20px;
+}

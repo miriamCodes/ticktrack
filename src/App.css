@@ -1,0 +1,50 @@
+.App {
+  text-align: center;
+  font-family: "Source Code Pro", monospace;
+  display: inline-block;
+  width: 100%;
+  /* background-color: coral; */
+}
+@media (min-width: 768px) {
+  .App-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .App-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+  }
+}
+
+.logo-container {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.App-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.App-name {
+  color: #be6e46;
+  font-size: 40px;
+  margin-left: 10px;
+  line-height: 40px;
+}
+
+.Nav-btn {
+  color: #d4d6b9;
+}
