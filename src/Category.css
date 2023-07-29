@@ -28,7 +28,8 @@
   display: block;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 180px;
+  margin-top: 50px;
   /* background-color: red; */
 }
 

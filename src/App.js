@@ -15,7 +15,7 @@ function App() {
           <div className="App-logo">
             <img src={logo} alt="logo" />
           </div>
-          <p className="App-name">ticktrack</p>
+          <p className="App-name">tick<b>track</b></p>
         </div>
         <div className="Nav-btn">
           <ButtonGroup
