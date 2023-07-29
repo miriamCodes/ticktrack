@@ -12,7 +12,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-
+``;
 function Timer() {
   // store timer value aka duration
   const [timeLeft, setTimeLeft] = useState(1500);
@@ -57,6 +57,7 @@ function Timer() {
       interval = setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
+      console.log("tick");
     }
 
     if (!timerRunning || timeLeft === 0) {
@@ -138,7 +139,6 @@ function Timer() {
           className="start-button"
           onClick={startTimer}
           disabled={timerRunning}
-          onClick={startTimer}
           disabled={(timerRunning && !timerPaused) || timeLeft === 0} // Disable if the timer is completed or paused
         >
           {timerRunning && !timerPaused ? "Resume" : "Start"}
