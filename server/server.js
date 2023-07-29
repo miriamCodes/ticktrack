@@ -1,10 +1,11 @@
 "use strict";
 
 const Koa = require("koa");
-const Router = require("@koa/router");
 
 const app = new Koa();
-const router = new Router();
+const router = require('./router')
+const cors = require("@koa/cors");
+
 
 // const serve = require('koa-static');
 const bodyParser = require("koa-bodyparser");
@@ -12,19 +13,10 @@ const sequelize = require("./models");
 
 // const conf = require('./config');
 
-const port = 3000;
-
+app.use(cors());
 // app.use(serve(conf.clientPath));
 app.use(bodyParser());
 app.use(router.routes());
-
-// app.listen(port, () => {
-//   console.log(`i am listening to ${port}`);
-// });
-
-app.use(async (ctx) => {
-  ctx.body = "Hello World";
-});
 
 router.get("/", (ctx) => {
   ctx.body = "hello codeworks!";
@@ -39,7 +31,7 @@ app.use(router.routes()).use(router.allowedMethods());
 
 (async () => {
   await sequelize.sync();
-  const port = 3000;
+  const port = 3001;
   app.listen(port);
   console.log(`i am listening to ${port}`); // eslint-disable-line no-console
 })();

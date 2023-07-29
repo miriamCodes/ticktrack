@@ -1,11 +1,10 @@
 // schema for sequelize
 
-const fs = require("fs");
-const path = require("path");
+// const fs = require("fs");
+// const path = require("path");
 const Sequelize = require("sequelize");
-const db = {};
 
-const sequelize = new Sequelize("postgres", "miriam", "", {
+const database = new Sequelize("postgres", "miriam", "", {
   host: "localhost",
   dialect: "postgres",
   logging: false,
@@ -18,13 +17,19 @@ const sequelize = new Sequelize("postgres", "miriam", "", {
   operatorsAliases: false,
 });
 
+
 async function testConnection() {
   try {
-    await sequelize.authenticate();
+    await database.authenticate();
     console.log("Connection has been established successfully.");
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
 }
 testConnection();
-module.exports = sequelize;
+
+// const Category = require("./Category");
+// zyklische abhaengigkeit deshalb  db leer
+
+module.exports = database;
+// export not working, db in index.js full, but in category.js empty
