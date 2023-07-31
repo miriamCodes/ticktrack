@@ -4,6 +4,7 @@
 // const path = require("path");
 
 import { Sequelize } from "sequelize";
+// library as named export so here squirly brackets
 
 const database = new Sequelize("postgres", "miriam", "", {
   host: "localhost",

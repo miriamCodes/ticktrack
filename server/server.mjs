@@ -4,7 +4,7 @@ import Koa from "koa";
 import router from "./router.js";
 import cors from "@koa/cors";
 import bodyParser from "koa-bodyparser";
-// import { sequelize } from './models/index.js'
+import sequelize from "./models/index.model.js";
 
 const app = new Koa();
 

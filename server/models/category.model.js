@@ -4,7 +4,7 @@
 // push
 // delete
 
-import database from "./index";
+import database from "./index.model.js";
 import { DataTypes } from "sequelize";
 
 const Category = database.define("Category", {

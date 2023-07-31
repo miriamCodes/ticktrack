@@ -7,7 +7,7 @@
 
 "use strict";
 
-import Category from "../models/Category";
+import Category from "../models/category.model.js"
 
 export const listAllCategories = async (ctx) => {
   try {
