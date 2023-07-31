@@ -1,0 +1,244 @@
+openapi: "3.0.0"
+info:
+  title: ticktrack API overview
+  version: 2.0.0
+paths:
+
+#### CATEGORY
+  /category:
+    get:
+      summary: list all categories for timer
+      operationId: listAllCategories
+      tags:
+      - category
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+        '500':
+          $ref: '#/components/schemas/ServerError'
+
+    post:
+      summary: create new category for timer and list all categories
+      operationId: addCategory
+      tags:
+      - category
+      requestBody: 
+        $ref: '#/components/requestBodies/CategoryRequest'
+      responses:
+        '201':
+          description: new category created
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+        '400':
+          $ref: '#/components/responses/InputError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+    delete:
+      summary: delete category and list all categories
+      operationId: deleteCategory
+      tags:
+      - category
+      requestBody: 
+        $ref: '#/components/requestBodies/CategoryRequest'
+      responses:
+        '200':
+          description: category deleted
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+        '400':
+          $ref: '#/components/responses/InputError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  ### TIMER
+  /timer:
+    get:
+      summary: list all finished timer intervals
+      operationId: listAllTimerIntervals
+      tags:
+      - timer
+      responses:
+        '200':
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Timer'   
+        '400':
+          $ref: '#/components/responses/InputError'
+        '500':
+          description: internal server error
+          $ref: '#/components/responses/ServerError'
+    post:
+      summary: create aka start new timer interval
+      operationId: createTimerInterval
+      tags:
+      - timer
+      requestBody:
+        $ref: '#/components/requestBodies/TimerRequest'
+      responses:
+        '200':
+          description: ok
+          $ref: '#/components/responses/TimerResponse'
+        '400':
+          $ref: '#/components/responses/InputError'
+        '500':
+          description: internal server error
+          $ref: '#/components/responses/ServerError'
+  
+  /timer/{timerId}:
+    put:
+      summary: update status, start or end time, category of timer interval
+      operationId: updateTimerInterval
+      tags:
+      - timer
+      requestBody:
+        $ref: '#/components/requestBodies/TimerRequest'
+      responses:
+        '200':
+          description: ok
+          $ref: '#/components/responses/TimerResponse'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          description: internal server error
+          $ref: '#/components/responses/ServerError'
+    delete:
+      summary: delete a finished timer interval
+      operationId: deleteTimerInterval
+      tags:
+      - timer
+      requestBody:
+        $ref: '#/components/requestBodies/TimerRequest'
+      responses:
+        '200':
+          description: ok, timer deleted
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+        '500':
+          description: internal server error
+          $ref: '#/components/responses/ServerError'  
+
+### COMPONENTS
+components:
+  schemas:
+    
+    ### SCHEMAS
+    Timer:
+      type: object
+      required:
+      - category
+      - duration
+      properties:
+        timerId: 
+          type: string
+          readOnly: true # so that only necessary in response, not request
+          # only for response, for request add id in url timer/id
+        category:
+          $ref: '#/components/schemas/Category'
+        status:
+          type: string
+          enum: [running, paused, canceled, ended]
+        startTime:
+          type: string
+          format: date-type
+          example: "2023-07-25T12:00:00Z"
+        endTime:
+          type: string
+          format: date-type
+          example: "2023-07-25T12:25:00Z"
+        duration:
+          type: number
+          example: 1500
+          description: duration in seconds
+
+## break as type not category 
+
+    Category: 
+      type: string
+      example: research
+
+  ### ERROR
+    ServerError:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+          example: 500
+        message:
+          type: string
+          example: AAAAAH *i* did something wrong!
+    InputError:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+          example: 400
+        message:
+          type: string
+          example: AAAAAH *you* did something wrong!
+
+  ### REQUEST BODIES
+  requestBodies:
+    CategoryRequest:
+      required: true
+      content: 
+        application/json:
+          schema:
+            type: object
+            properties:
+              category:
+                $ref: '#/components/schemas/Category'
+
+    TimerRequest:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Timer'
+
+  ### RESPONSES
+  responses:
+      ServerError:
+        description: internal server error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServerError'          
+      InputError:
+        description: client error
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InputError'
+      NotFoundError:
+        description: not found 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/responses/NotFoundError'
+      TimerResponse:
+        description: updated timer
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Timer'
