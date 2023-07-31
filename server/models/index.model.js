@@ -26,7 +26,7 @@ const testConnection = async () => {
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
-}
+};
 testConnection();
 
 // const Category = require("./Category");

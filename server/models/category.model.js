@@ -1,9 +1,5 @@
 // talks to database
 
-// findAll
-// push
-// delete
-
 import database from "./index.model.js";
 import { DataTypes } from "sequelize";
 

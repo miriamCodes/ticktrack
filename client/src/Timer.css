@@ -86,7 +86,7 @@ justify-content: center;
 /* Additional media query for smaller devices, like mobile phones */
 @media (max-width: 480px) {
   .timer-count {
-    font-size: 9em;
+    font-size: 9rem;
   }
 }
 

@@ -23,16 +23,15 @@ export const listAllCategories = async (ctx) => {
 export const addCategory = async (ctx) => {
   console.log(ctx.request.body);
   try {
-    const { name: categoryName } = ctx.request.body;
-    console.log("my categoryname", categoryName);
+    const { name } = ctx.request.body;
+    console.log("my categoryname", name);
+    let categoryName = name;
     if (!categoryName) {
       ctx.status = 400;
       ctx.body = { error: "category name is required" };
       return;
     }
-    await Category.create({
-      name: categoryName,
-    });
+    await Category.create(categoryName);
 
     ctx.status = 201;
     ctx.body = { message: "new category created successfully" };

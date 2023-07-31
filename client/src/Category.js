@@ -10,14 +10,57 @@
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import { TextField } from "@mui/material";
+import { useState, useEffect } from "react";
+import {
+  getAllCategories,
+  addCategory,
+  deleteCategory,
+} from "./categoryService";
 
 function Category() {
-  const handleClick = () => {
-    console.info("You clicked the Chip.");
+  const defaultCategories = [
+    { name: "break" },
+    { name: "research" },
+    { name: "execution" },
+    { name: "improvement" },
+  ];
+
+  const [categories, setCategories] = useState(defaultCategories);
+  const [newCategoryName, setNewCategoryName] = useState("");
+
+  useEffect(() => {
+    handleGetAllCategories();
+  }, [newCategoryName]);
+
+  const handleGetAllCategories = async () => {
+    const categories = await getAllCategories();
+    setCategories(categories); // is overwriting default categories
   };
 
-  const handleDelete = () => {
-    console.info("You clicked the delete icon.");
+  const handleAddCategory = async () => {
+    console.log(newCategoryName, 'new category')
+    if (newCategoryName.trim() !== "") {
+      await addCategory({ name: newCategoryName });
+      setNewCategoryName("");
+      // handleGetAllCategories();
+    }
+  };
+
+  // const handleClick = () => {
+  //   console.info("You clicked the Chip.");
+  // };
+
+  const handleDeleteCategory = async (categoryName) => {
+    console.log(categoryName)
+    await deleteCategory(categoryName);
+    handleGetAllCategories();
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleAddCategory();
+      
+    }
   };
 
   return (
@@ -25,38 +68,41 @@ function Category() {
       <h2>what thoughtspace do you want to focus on?</h2>
       <div className="category-list-deletable">
         <Stack direction="column" spacing={4}>
-          <Chip
-            className="chip"
-            sx={{ height: 45 }}
-            label="research"
-            color="secondary"
-            onClick={handleClick}
-            onDelete={handleDelete}
-          />
-          <Chip
-            className="chip"
-            sx={{ height: 45 }}
-            label="execution"
-            color="secondary"
-            onClick={handleClick}
-            onDelete={handleDelete}
-          />
-          <Chip
-            className="chip"
-            sx={{ height: 45 }}
-            label="improvement"
-            color="secondary"
-            onClick={handleClick}
-            onDelete={handleDelete}
-          />
-          <Chip
-            className="chip"
-            sx={{ height: 45 }}
-            label="break"
-            color="secondary"
-            onClick={handleClick}
-            onDelete={handleDelete}
-          />
+          {categories.map((category) => (
+            <Chip
+              className="chip"
+              key={category.name}
+              sx={{ height: 45 }}
+              label={category.name}
+              color="secondary"
+              // onClick={handleClick}
+              onDelete={() => handleDeleteCategory(category.name)}
+            />
+            // <Chip
+            //   className="chip"
+            //   sx={{ height: 45 }}
+            //   label="execution"
+            //   color="secondary"
+            //   onClick={handleClick}
+            //   onDelete={handleDelete}
+            // />
+            // <Chip
+            //   className="chip"
+            //   sx={{ height: 45 }}
+            //   label="improvement"
+            //   color="secondary"
+            //   onClick={handleClick}
+            //   onDelete={handleDelete}
+            // />
+            // <Chip
+            //   className="chip"
+            //   sx={{ height: 45 }}
+            //   label="break"
+            //   color="secondary"
+            //   onClick={handleClick}
+            //   onDelete={handleDelete}
+            // />
+          ))}
         </Stack>
       </div>
       <div className="input-add-category">
@@ -66,7 +112,17 @@ function Category() {
           label="add category"
           variant="outlined"
           color="signalcolor"
+          value={newCategoryName}
+          onChange={(e) => setNewCategoryName(e.target.value)}
+          onKeyDown={handleKeyPress}
         />
+        {/* <Button 
+        className="add-category-btn"
+        variant="outlined" 
+        color="signalcolor"
+        onClick={handleAddCategory}>
+          add
+        </Button> */}
       </div>
     </div>
   );

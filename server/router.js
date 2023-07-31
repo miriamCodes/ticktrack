@@ -6,10 +6,14 @@ const router = new RouterPackage();
 // const categories = require('./controllers/categories')
 // const timer = require('./controllers/timer')
 
-import { listAllCategories, addCategory, deleteCategory } from "./controllers/category.js";
+import {
+  listAllCategories,
+  addCategory,
+  deleteCategory,
+} from "./controllers/category.js";
 
 router.get("/category", listAllCategories);
 router.post("/category", addCategory);
-router.delete('/category', deleteCategory)
+router.delete("/category", deleteCategory);
 
 export default router;
