@@ -7,9 +7,9 @@
 
 "use strict";
 
-const Category = require("../models/Category");
+import Category from "../models/Category";
 
-exports.listAllCategories = async (ctx) => {
+export const listAllCategories = async (ctx) => {
   try {
     const categories = await Category.findAll();
     ctx.body = categories;
@@ -19,7 +19,7 @@ exports.listAllCategories = async (ctx) => {
   }
 };
 
-exports.addCategory = async (ctx) => {
+export const addCategory = async (ctx) => {
   try {
     const { categoryName } = ctx.request.body;
     await Category.create({

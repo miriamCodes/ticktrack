@@ -1,14 +1,14 @@
-const Router = require("@koa/router");
-const router = new Router();
+import RouterPackage from "@koa/router";
+const router = new RouterPackage();
 
 // RouterPack in line 1
 
 // const categories = require('./controllers/categories')
 // const timer = require('./controllers/timer')
 
-const { listAllCategories, addCategory } = require("./controllers/category");
+import { listAllCategories, addCategory } from "./controllers/category.js";
 
 router.get("/category", listAllCategories);
 router.post("/category", addCategory);
 
-module.exports = router;
+export default router;

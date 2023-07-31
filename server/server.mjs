@@ -1,14 +1,12 @@
 "use strict";
 
-const Koa = require("koa");
+import Koa from "koa";
+import router from "./router.js";
+import cors from "@koa/cors";
+import bodyParser from "koa-bodyparser";
+// import { sequelize } from './models/index.js'
 
 const app = new Koa();
-const router = require("./router");
-const cors = require("@koa/cors");
-
-// const serve = require('koa-static');
-const bodyParser = require("koa-bodyparser");
-const sequelize = require("./models");
 
 // const conf = require('./config');
 

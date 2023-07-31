@@ -4,8 +4,8 @@
 // push
 // delete
 
-const database = require("./index");
-const { DataTypes } = require("sequelize");
+import database from "./index";
+import { DataTypes } from "sequelize";
 
 const Category = database.define("Category", {
   name: {
@@ -16,4 +16,4 @@ const Category = database.define("Category", {
 
 Category.sync(); // TODO unklar
 
-module.exports = Category;
+export default Category;

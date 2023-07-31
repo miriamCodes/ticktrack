@@ -2,7 +2,8 @@
 
 // const fs = require("fs");
 // const path = require("path");
-const Sequelize = require("sequelize");
+
+import { Sequelize } from "sequelize";
 
 const database = new Sequelize("postgres", "miriam", "", {
   host: "localhost",
@@ -17,7 +18,7 @@ const database = new Sequelize("postgres", "miriam", "", {
   operatorsAliases: false,
 });
 
-async function testConnection() {
+const testConnection = async () => {
   try {
     await database.authenticate();
     console.log("Connection has been established successfully.");
@@ -30,5 +31,5 @@ testConnection();
 // const Category = require("./Category");
 // zyklische abhaengigkeit deshalb  db leer
 
-module.exports = database;
+export default database;
 // export not working, db in index.js full, but in category.js empty
