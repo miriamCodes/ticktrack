@@ -17,7 +17,6 @@ const database = new Sequelize("postgres", "miriam", "", {
   operatorsAliases: false,
 });
 
-
 async function testConnection() {
   try {
     await database.authenticate();

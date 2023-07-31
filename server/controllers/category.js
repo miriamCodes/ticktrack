@@ -7,7 +7,7 @@
 
 "use strict";
 
-const Category = require('../models/Category')
+const Category = require("../models/Category");
 
 exports.listAllCategories = async (ctx) => {
   try {

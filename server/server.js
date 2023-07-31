@@ -3,9 +3,8 @@
 const Koa = require("koa");
 
 const app = new Koa();
-const router = require('./router')
+const router = require("./router");
 const cors = require("@koa/cors");
-
 
 // const serve = require('koa-static');
 const bodyParser = require("koa-bodyparser");
