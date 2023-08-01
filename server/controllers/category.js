@@ -45,8 +45,9 @@ export const addCategory = async (ctx) => {
 export const deleteCategory = async (ctx) => {
   try {
     const { name: categoryName } = ctx.request.body;
-    const category = await Category.findOne({ categoryName });
+    const category = await Category.findOne({ where: { name: categoryName } });
     console.log("name", categoryName);
+    console.log("found category", category);
     console.log("body", ctx.request.body);
     if (!categoryName) {
       ctx.status = 404;

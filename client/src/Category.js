@@ -25,7 +25,7 @@ function Category() {
     { name: "improvement" },
   ];
 
-  const [categories, setCategories] = useState(defaultCategories);
+  let [categories, setCategories] = useState([defaultCategories]);
   const [newCategoryName, setNewCategoryName] = useState("");
 
   useEffect(() => {
@@ -33,12 +33,15 @@ function Category() {
   }, [newCategoryName]);
 
   const handleGetAllCategories = async () => {
-    const categories = await getAllCategories();
-    setCategories(categories); // is overwriting default categories
+    let fetchedCategories = await getAllCategories();
+    console.log(categories);
+    // categories = [...defaultCategories, ...fetchedCategories];
+    // console.log(categories);
+    setCategories(fetchedCategories); // is overwriting default categories, tried array in line 28 and 37, also spread  operator in 37
   };
 
   const handleAddCategory = async () => {
-    console.log(newCategoryName, 'new category')
+    console.log(newCategoryName, "new category");
     if (newCategoryName.trim() !== "") {
       await addCategory({ name: newCategoryName });
       setNewCategoryName("");
@@ -51,7 +54,7 @@ function Category() {
   // };
 
   const handleDeleteCategory = async (categoryName) => {
-    console.log(categoryName)
+    console.log(categoryName);
     await deleteCategory(categoryName);
     handleGetAllCategories();
   };
@@ -59,7 +62,6 @@ function Category() {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleAddCategory();
-      
     }
   };
 

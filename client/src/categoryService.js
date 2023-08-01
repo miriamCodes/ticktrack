@@ -1,6 +1,6 @@
 // service methods to make api calls
 
-const API_BASE_URL = "http://localhost:3001"; // Replace with your backend API URL
+const API_BASE_URL = "http://localhost:3001";
 
 export const getAllCategories = async () => {
   const response = await fetch(`${API_BASE_URL}/category`);

@@ -7,13 +7,18 @@
 // to App.js: update the interval history data
 
 import React, { useState, useEffect } from "react";
-import { Button, Input } from "@mui/material";
+import { Button } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-``;
+import { handleShowOptionCategories } from "./categoryService";
+const BACKEND_API_URL = "http://localhost:3001";
+import { getAllCategories } from "./categoryService";
+
 function Timer() {
+  // create state to hold categories from backend
+  const [categories, setCategories] = useState([]);
   // store timer value aka duration
   const [timeLeft, setTimeLeft] = useState(1500);
   // store timer status aka running, paused
@@ -66,13 +71,26 @@ function Timer() {
 
     if (timeLeft === 0) {
       // Timer completed
-      console.log("time for a break!");
+      alert("time for a break!");
     }
 
     return () => {
       clearInterval(interval);
     };
   }, [timerRunning, timeLeft]);
+
+  useEffect(() => {
+    handleShowOptionCategories();
+  }, []);
+
+  const handleShowOptionCategories = async () => {
+    try {
+      const categoriesList = await getAllCategories();
+      setCategories(categoriesList);
+    } catch (error) {
+      console.error("error fetching categories to choose from:", error);
+    }
+  };
 
   // helper function to format time in MM:SS
   const formatTime = (timeInSeconds) => {
@@ -123,10 +141,15 @@ function Timer() {
                 // onChange={handleChange}
                 label="Category"
               >
-                <MenuItem value="break">break</MenuItem>
+                {categories.map((category) => (
+                  <MenuItem key={category.name} value={category.name}>
+                    {category.name}
+                  </MenuItem>
+                ))}
+                {/* <MenuItem value="break">break</MenuItem>
                 <MenuItem value="research">research</MenuItem>
                 <MenuItem value="execution">execution</MenuItem>
-                <MenuItem value="improvement">improvement</MenuItem>
+                <MenuItem value="improvement">improvement</MenuItem> */}
               </Select>
             </FormControl>
           </div>
