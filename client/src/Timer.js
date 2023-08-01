@@ -6,15 +6,13 @@
 // timer logic: start,  pause, resume, reset, end  timer
 // to App.js: update the interval history data
 
+import { getAllCategories } from "./categoryService";
 import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { handleShowOptionCategories } from "./categoryService";
-const BACKEND_API_URL = "http://localhost:3001";
-import { getAllCategories } from "./categoryService";
 
 function Timer() {
   // create state to hold categories from backend
@@ -161,7 +159,7 @@ function Timer() {
           variant="outlined"
           className="start-button"
           onClick={startTimer}
-          disabled={timerRunning}
+          // disabled={timerRunning}
           disabled={(timerRunning && !timerPaused) || timeLeft === 0} // Disable if the timer is completed or paused
         >
           {timerRunning && !timerPaused ? "Resume" : "Start"}

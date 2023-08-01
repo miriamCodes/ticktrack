@@ -34,9 +34,6 @@ function Category() {
 
   const handleGetAllCategories = async () => {
     let fetchedCategories = await getAllCategories();
-    console.log(categories);
-    // categories = [...defaultCategories, ...fetchedCategories];
-    // console.log(categories);
     setCategories(fetchedCategories); // is overwriting default categories, tried array in line 28 and 37, also spread  operator in 37
   };
 
