@@ -2,10 +2,12 @@ import logo from "./logo.svg";
 import "./App.css";
 import "./Timer.css";
 import "./Category.css";
+import "./History.css";
 import { Button } from "@mui/material";
 import { ButtonGroup } from "@mui/material";
 import Timer from "./Timer";
 import Category from "./Category";
+import History from "./History"
 
 function App() {
   return (
@@ -39,6 +41,7 @@ function App() {
       </header>
       <Timer />
       <Category />
+      <History  />
     </div>
   );
 }
