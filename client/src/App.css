@@ -3,7 +3,6 @@
   font-family: "Source Code Pro", monospace;
   display: inline-block;
   width: 100%;
-  /* background-color: coral; */
 }
 @media (min-width: 768px) {
   .App-header {

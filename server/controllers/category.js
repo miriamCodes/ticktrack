@@ -1,10 +1,3 @@
-// get all categories
-// add a category
-// delete a category
-// talks to model
-
-// index.js needs app.use(express.json) as bodyparser before other middleware requests as app.get
-
 "use strict";
 
 import Category from "../models/category.model.js";

@@ -3,18 +3,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background-color: chocolate; */
-  /* width: 100%; full width on mobile */
   max-width: 50%; /* 50% width on desktop */
 }
 
 .category-list-deletable {
   width: 100%; /* full width on mobile */
-  /*max-width: 50%;  50% width on desktop */
   display: block;
   flex-direction: column;
   align-items: center;
-  /* background-color: aquamarine; */
 }
 
 .chip {
@@ -23,19 +19,16 @@
 
 .input-add-category {
   width: 100%; /* full width on mobile */
-  /* max-width: 50%; 50% width on desktop */
   margin: auto;
   display: block;
   flex-direction: column;
   align-items: center;
   margin-bottom: 180px;
   margin-top: 50px;
-  /* background-color: red; */
 }
 
-.add-category-btn{
-
-padding: 30px;
+.add-category-btn {
+  padding: 30px;
 }
 
 /* Media query for desktop */

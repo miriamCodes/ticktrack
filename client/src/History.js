@@ -1,12 +1,6 @@
-// render list of completed, interrupted and canceled interval history
-// start with only completed history!
-
 import { FormControl, MenuItem } from "@mui/material";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
-// history logic: display by category or day
-
-// interval history data will be stored on the server
 
 function History() {
   return (

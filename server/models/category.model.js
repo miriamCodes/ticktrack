@@ -1,5 +1,3 @@
-// talks to database
-
 import database from "./index.model.js";
 import { DataTypes } from "sequelize";
 
@@ -10,6 +8,6 @@ const Category = database.define("Category", {
   },
 });
 
-Category.sync(); // TODO unklar
+Category.sync();
 
 export default Category;

@@ -8,10 +8,8 @@ import sequelize from "./models/index.model.js";
 
 const app = new Koa();
 
-// const conf = require('./config');
-
 app.use(cors());
-// app.use(serve(conf.clientPath));
+
 app.use(bodyParser());
 app.use(router.routes());
 
@@ -30,5 +28,5 @@ app.use(router.routes()).use(router.allowedMethods());
   await sequelize.sync();
   const port = 3001;
   app.listen(port);
-  console.log(`i am listening to ${port}`); // eslint-disable-line no-console
+  console.log(`i am listening to ${port}`);
 })();

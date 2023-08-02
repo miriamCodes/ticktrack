@@ -1,10 +1,4 @@
-// schema for sequelize
-
-// const fs = require("fs");
-// const path = require("path");
-
 import { Sequelize } from "sequelize";
-// library as named export so here squirly brackets
 
 const database = new Sequelize("postgres", "miriam", "", {
   host: "localhost",
@@ -29,8 +23,4 @@ const testConnection = async () => {
 };
 testConnection();
 
-// const Category = require("./Category");
-// zyklische abhaengigkeit deshalb  db leer
-
 export default database;
-// export not working, db in index.js full, but in category.js empty

@@ -1,11 +1,3 @@
-// render timer
-// render  start/resume, pause, reset  buttons
-// render input field for task category
-// render input field for duration
-
-// timer logic: start,  pause, resume, reset, end  timer
-// to App.js: update the interval history data
-
 import { getAllCategories } from "./categoryService";
 import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
@@ -46,6 +38,7 @@ function Timer() {
     setTimeLeft(selectedMinutes * 60); // Reset to 25 minutes
     setTimerRunning(false);
     setTimerPaused(false);
+    handleShowOptionCategories();
   };
 
   useEffect(() => {
@@ -108,7 +101,6 @@ function Timer() {
         <div className="timer-settings">
           <div className="input-container-minutes">
             <p className="spending-label">spending </p>
-            {/* <input type="number" className="input-minutes" /> */}
             <FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
               <InputLabel id="input-minutes">minutes</InputLabel>
               <Select
@@ -133,33 +125,22 @@ function Timer() {
             <p className="on-label">on</p>
             <FormControl variant="standard" sx={{ m: 1, minWidth: 150 }}>
               <InputLabel id="select-category-label">category</InputLabel>
-              <Select
-                className="select-category"
-                // value={category}
-                // onChange={handleChange}
-                label="Category"
-              >
+              <Select className="select-category" label="Category">
                 {categories.map((category) => (
                   <MenuItem key={category.name} value={category.name}>
                     {category.name}
                   </MenuItem>
                 ))}
-                {/* <MenuItem value="break">break</MenuItem>
-                <MenuItem value="research">research</MenuItem>
-                <MenuItem value="execution">execution</MenuItem>
-                <MenuItem value="improvement">improvement</MenuItem> */}
               </Select>
             </FormControl>
           </div>
         </div>
       </div>
       <div className="button-container">
-        {/* <ButtonGroup variant="text" aria-label="text button group"> */}
         <Button
           variant="outlined"
           className="start-button"
           onClick={startTimer}
-          // disabled={timerRunning}
           disabled={(timerRunning && !timerPaused) || timeLeft === 0} // Disable if the timer is completed or paused
         >
           {timerRunning && !timerPaused ? "Resume" : "Start"}
@@ -179,7 +160,6 @@ function Timer() {
         >
           Reset
         </Button>
-        {/* </ButtonGroup> */}
       </div>
     </div>
   );

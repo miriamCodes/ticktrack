@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 import { ButtonGroup } from "@mui/material";
 import Timer from "./Timer";
 import Category from "./Category";
-import History from "./History"
+import History from "./History";
 
 function App() {
   return (
@@ -41,7 +41,7 @@ function App() {
       </header>
       <Timer />
       <Category />
-      <History  />
+      <History />
     </div>
   );
 }
