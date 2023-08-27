@@ -41,7 +41,7 @@ When successfully connected to the client, localhost:3000 will be opened in your
 - PostgreSQL
 - React
 - CSS
-_ MUI
+- MUI
 
 ### Project Status
 
