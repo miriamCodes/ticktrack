@@ -1,4 +1,4 @@
-# Welcome to ticktrack 👋
+# Welcome to ticktrack
 
 > 'ticktrack' is a responsive web-app that integrates a promodoro-timer. Users can log and save the categories they've worked on. Future implementations will showcase this data in the form of a time-tracker.
 
@@ -6,6 +6,7 @@
 
 ![ticktrack Screenshot](screenshots/ticktrack_screenshot_categories.png)
 
+![ticktrack Screenshot](screenshots/ticktrack_screenshot_statistics_soon.png)
 ## Getting started
 
 ###  Prerequisittes
@@ -24,6 +25,7 @@ When successfully connected to the client (by running `npm start`), localhost:30
 ## Techstack
 
 Backend: Koa and Sequelize with a PostgreSQL database.
+
 Frontend: React and MUI (Material-UI).
 
 ### Project Status
