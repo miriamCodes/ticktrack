@@ -11,7 +11,10 @@
 
 ###  Prerequisittes
 
-Before running this project, ensure you have installed the following software on your machine: nodejs, postgreSQL.
+Before running this project, ensure you have installed the following software on your machine: 
+
+- [nodejs](https://nodejs.org/en)
+- [postgreSQL](https://www.postgresql.org)
 ### Install
 
 Run the command to install node packages based on your local environment (e.g. 'npm install') in /client and /server.
@@ -33,9 +36,12 @@ npm start
 When successfully connected to the client, localhost:3000 will be opened in your browser.
 ## Techstack
 
-Backend: Koa and Sequelize with a PostgreSQL database.
-
-Frontend: React and MUI (Material-UI).
+- Koa
+- Sequelize
+- PostgreSQL
+- React
+- CSS
+_ MUI
 
 ### Project Status
 
