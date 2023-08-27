@@ -1,14 +1,36 @@
-# ticktrack
-'ticktrack' is my first ever solo-project, featuring a promodoro-timer that saves the categories worked on and, in the future, displays them in form of a time-tracker.
+# Welcome to ticktrack 👋
 
-After 4 days, I planned out the design using openAPI spec and a sequence diagram, 
-I created a color schema, styled all the components and made them responsive,
-I built the timer logic in react,
-I implemented the back- and frontend logic for the category component
-& started the history component.
+> 'ticktrack' is a responsive web-app that integrates a promodoro-timer. Users can log and save the categories they've worked on. Future implementations will showcase this data in the form of a time-tracker.
 
-For the backend I used koa and sequelize with an underlying postgres sql database.
-Fot the frontend I used react and MUI (to handle the color schema and styling of buttons and inputs).
+![ticktrack Screenshot](screenshots/ticktrack_screenshot_timer.png)
 
-As a next step, I plan to complete the history component and display the successfully completed intervals in pie diagrams (by category) and bar diagrams (by day).
-Additionally, I want to refactor the code to typescript and write tests.
+![ticktrack Screenshot](screenshots/ticktrack_screenshot_categories.png)
+
+## Getting started
+
+###  Prerequisittes
+
+Before running this project, ensure you have installed the following software on your machine: nodejs, postgreSQL.
+### Install
+
+Run the command to install node packages based on your local environment (e.g. 'npm install') in /client and /server.
+
+```sh
+npm install
+```
+
+When successfully connected to the server (by running `npm start`), the message 'i am listening to 3001' will be displayed in your terminal.
+When successfully connected to the client (by running `npm start`), localhost:3000 will be opened in your browser.
+## Techstack
+
+Backend: Koa and Sequelize with a PostgreSQL database.
+Frontend: React and MUI (Material-UI).
+
+### Project Status
+
+The work on this project slowed down but is soon to be picked up again.
+
+## Author
+
+* Github: [@miriamCodes](https://github.com/miriamCodes)
+
