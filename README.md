@@ -17,11 +17,20 @@ Before running this project, ensure you have installed the following software on
 Run the command to install node packages based on your local environment (e.g. 'npm install') in /client and /server.
 
 ```sh
+cd ./server
 npm install
+npm start
 ```
 
-When successfully connected to the server (by running `npm start`), the message 'i am listening to 3001' will be displayed in your terminal.
-When successfully connected to the client (by running `npm start`), localhost:3000 will be opened in your browser.
+When successfully connected to the server, the message 'i am listening to 3001' will be displayed in your terminal.
+
+```sh
+cd ./client
+npm install
+npm start
+```
+
+When successfully connected to the client, localhost:3000 will be opened in your browser.
 ## Techstack
 
 Backend: Koa and Sequelize with a PostgreSQL database.
